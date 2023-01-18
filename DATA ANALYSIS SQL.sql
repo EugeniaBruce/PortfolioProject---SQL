@@ -1,25 +1,53 @@
---SELECT first_name,last_name,email FROM customer;
---SELECT DISTINCT rating FROM film;
---SELECT email FROM customer
- -- WHERE first_name = 'Nancy'and last_name = 'Thomas';
--- SELECT customer_id, payment_date FROM payment
- --ORDER BY payment_date ASC
- --LIMIT 10;
- --SELECT COUNT (title) FROM film
- --WHERE length <= 50;
- --SELECT COUNT (amount) FROM payment
- --WHERE amount > 4;
- --SELECT COUNT(first_name) FROM actor
--- WHERE first_name LIKE 'P%';
---SELECT COUNT (rating) FROM film
---WHERE rating = 'R'
---AND replacement_cost BETWEEN 5 AND 15;
---SELECT staff_id,COUNT(payment_id) FROM payment
---GROUP BY staff_id;
---SELECT customer_id, sum(amount) FROM payment
---WHERE staff_id = 2
---GROUP BY customer_id
---HAVING sum(amount) >=110;
+ DVD RENTAL DATA ANALYSIS
+ 
+-Tool: POSTGRESQL
+--Task: Use PostgreSQL to analyze data and identify 
+  trends and pattern for a DVD rental
+- Skills used: Joins,Aggregate Functions.....
+- Results.....
+
+--Customer information showing full name and email address 
+
+SELECT first_name,last_name,email FROM customer;
+
+--Show list of film ratings available 
+SELECT DISTINCT rating FROM film;
+
+--Identify email address of Nancy Thomas
+SELECT email FROM customer
+WHERE first_name = 'Nancy'and last_name = 'Thomas';
+
+--First 10 customers that made payment
+SELECT customer_id, payment_date FROM payment
+ORDER BY payment_date ASC
+LIMIT 10;
+
+--Identify movies that are 50 minutes or less in duration
+SELECT COUNT (title) FROM film
+ WHERE length <= 50;
+ 
+ --Number of payment transactions greater than 4$
+ SELECT COUNT (amount) FROM payment
+ WHERE amount > 4;
+ 
+--How many actors with first name starting with P
+ SELECT COUNT(first_name) FROM actor
+ WHERE first_name LIKE 'P%';
+
+--How many films have a rating of R and a replacement cost between $5 and $15
+SELECT COUNT (rating) FROM film
+WHERE rating = 'R'
+AND replacement_cost BETWEEN 5 AND 15;
+
+--How many payments did each staff member handle
+SELECT staff_id,COUNT(payment_id) FROM payment
+GROUP BY staff_id;
+
+--Return the customer IDs of customers who have spent at least $110 with the staff member who has an ID of 2
+SELECT customer_id, sum(amount) FROM payment
+WHERE staff_id = 2
+GROUP BY customer_id
+HAVING sum(amount) >=110;
 --SELECT COUNT (title) FROM film
 --WHERE title LIKE 'J%';
 --SELECT first_name,last_name FROM customer
