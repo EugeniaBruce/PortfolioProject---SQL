@@ -96,16 +96,24 @@ MAX(rental_rate) AS highest_rental_rate,
 MIN(rental_rate) AS lowest_rental_rate,
 ROUND(AVG(rental_rate),2) AS average_rental_rate
 FROM film;
---SELECT COUNT (customer_id) FROM payment
---GROUP BY customer_id
---HAVING COUNT(customer_id) >=40;
- --SELECT film.film_id,title,inventory_id,store_id FROM film
- --LEFT JOIN inventory ON inventory.film_id = film.film_id
--- WHERE inventory.film_id IS NULL;
---SELECT inventory_id,store_id,
---title,rating,rental_rate,replacement_cost 
---FROM film INNER JOIN inventory 
---ON inventory.film_id =film.film_id;
+
+--DVD renta is lunching a platinum service for most loyal customers, return customers that have 40 or more transactions payments,
+SELECT customer_id, COUNT (customer_id) FROM payment
+GROUP BY customer_id
+HAVING COUNT(customer_id) >=40;
+
+--Share title of films that are not available in inventory 
+SELECT film.film_id,title,inventory_id,store_id FROM film
+LEFT JOIN inventory ON inventory.film_id = film.film_id
+WHERE inventory.film_id IS NULL;
+
+--Return a list of each item in stock, including the store_id number, the inventory_id, title of film, film_rating, rental_rate 
+--and replacement cost to better understand inventory
+SELECT inventory_id,store_id,
+title,rating,rental_rate,replacement_cost 
+FROM film INNER JOIN inventory 
+ON inventory.film_id =film.film_id;
+
 --SELECT  DISTINCT rental_duration  FROM film
 --ORDER BY rental_duration;
 --SELECT title,rental_rate,length FROM film
