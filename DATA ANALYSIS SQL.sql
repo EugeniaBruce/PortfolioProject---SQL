@@ -52,46 +52,50 @@ HAVING sum(amount) >=110;
 --How many films begin with the letter J?
 SELECT COUNT (title) FROM film
 WHERE title LIKE 'J%';
-fgfggfgfhfh
---SELECT first_name,last_name FROM customer
---WHERE first_name LIKE 'E%' AND address_id < 500
---ORDER BY customer_id DESC;
---SELECT district,email from customer
---INNER JOIN address ON address.address_id = customer.address_id
---WHERE district = 'California'
---SELECT title,first_name,last_name FROM film_actor 
---INNER JOIN actor ON film_actor.actor_id = actor.actor_id
---INNER JOIN film ON film_actor.film_id = film.film_id
---WHERE first_name = 'Nick'
---AND last_name = 'Wahlberg';
---SELECT DISTINCT  title, description FROM film
---INNER JOIN inventory ON film.film_id = inventory.film_id
---WHERE inventory.store_id =2;
---SELECT 
---SUM (CASE rating 
- --WHEN 'R' THEN 1 ELSE 0
- --END) AS r,
- --SUM (CASE rating 
- --WHEN 'PG' THEN 1 ELSE 0
- --END) AS pg,
- --SUM (CASE rating 
- --WHEN 'PG-13' THEN 1 ELSE 0
- --END) AS pg13
- --FROM film;
- --SELECT customer_id,
- --CASE WHEN (customer_id <=100) THEN 'Premium'
- --WHEN (customer_id BETWEEN 100 AND 200) THEN 'Plus'
- --ELSE 'Normal'
- --END AS customer_class
- --FROM customer;
- --SELECT customer_id,payment_date,amount FROM payment
- --WHERE amount > 5
- --AND payment_date >='2007-03-01';
---SELECT COUNT (rental_rate) AS number_of_films,
---MAX(rental_rate) AS highest_rental_rate,
---MIN(rental_rate) AS lowest_rental_rate,
---ROUND(AVG(rental_rate),2) AS average_rental_rate
---FROM film;
+
+--What customer has the highest customer ID number whose name starts with an 'E' 
+--and has an address ID lower than 500
+SELECT first_name,last_name FROM customer
+WHERE first_name LIKE 'E%' AND address_id < 500
+ORDER BY customer_id DESC;
+
+--What are the emails of customer who live in California
+SELECT district,email from customer
+INNER JOIN address ON address.address_id = customer.address_id
+WHERE district = 'California'
+
+--List of movies with Nick Wahlberg in it
+SELECT title,first_name,last_name FROM film_actor 
+INNER JOIN actor ON film_actor.actor_id = actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id
+WHERE first_name = 'Nick'
+AND last_name = 'Wahlberg';
+
+--List of distinct titles and their description in store 2
+SELECT DISTINCT  title, description FROM film
+INNER JOIN inventory ON film.film_id = inventory.film_id
+WHERE inventory.store_id =2;
+
+--DVD rental wants to run a promo for different tier of customers based on their customer id,
+--Premium(first 100 customer_ids), Plus (customer ids between 100-200) and Normal for others
+SELECT customer_id,
+CASE WHEN (customer_id <=100) THEN 'Premium'
+WHEN (customer_id BETWEEN 100 AND 200) THEN 'Plus'
+ELSE 'Normal'
+END AS customer_class
+FROM customer;
+
+--Customer IDs of customers who have made payments over 5$ since 2007-03-01
+SELECT customer_id,payment_date,amount FROM payment
+WHERE amount > 5
+AND payment_date >='2007-03-01';
+
+--Number of films showing MAX, MIN and AVG rental rate
+SELECT COUNT (rental_rate) AS number_of_films,
+MAX(rental_rate) AS highest_rental_rate,
+MIN(rental_rate) AS lowest_rental_rate,
+ROUND(AVG(rental_rate),2) AS average_rental_rate
+FROM film;
 --SELECT COUNT (customer_id) FROM payment
 --GROUP BY customer_id
 --HAVING COUNT(customer_id) >=40;
