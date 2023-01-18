@@ -52,7 +52,7 @@ HAVING sum(amount) >=110;
 --How many films begin with the letter J?
 SELECT COUNT (title) FROM film
 WHERE title LIKE 'J%';
-
+fgfggfgfhfh
 --SELECT first_name,last_name FROM customer
 --WHERE first_name LIKE 'E%' AND address_id < 500
 --ORDER BY customer_id DESC;
