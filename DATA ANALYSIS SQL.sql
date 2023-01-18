@@ -48,8 +48,11 @@ SELECT customer_id, sum(amount) FROM payment
 WHERE staff_id = 2
 GROUP BY customer_id
 HAVING sum(amount) >=110;
---SELECT COUNT (title) FROM film
---WHERE title LIKE 'J%';
+
+--How many films begin with the letter J?
+SELECT COUNT (title) FROM film
+WHERE title LIKE 'J%';
+
 --SELECT first_name,last_name FROM customer
 --WHERE first_name LIKE 'E%' AND address_id < 500
 --ORDER BY customer_id DESC;
