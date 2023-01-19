@@ -9,7 +9,6 @@
 --Customer information showing full name and email address 
 SELECT first_name,last_name,email FROM customer;
 
-
 --Show list of film ratings available 
 SELECT DISTINCT rating FROM film;
 
