@@ -2,9 +2,9 @@
  
 --Tool: POSTGRESQL
 --Task: Use PostgreSQL to analyze data and identify 
-trends and patterns for a DVD rental
+--trends and patterns for a DVD rental
 --Skills used: Joins,Aggregate Functions,Group By etc
---Results.....
+
 
 --Customer information showing full name and email address 
 SELECT first_name,last_name,email FROM customer;
