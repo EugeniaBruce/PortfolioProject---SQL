@@ -1,9 +1,9 @@
- DVD RENTAL DATA ANALYSIS
+ --DVD RENTAL DATA ANALYSIS
  
 --Tool: POSTGRESQL
 --Task: Use PostgreSQL to analyze data and identify 
---trends and pattern for a DVD rental
---Skills used: Joins,Aggregate Functions.....
+trends and patterns for a DVD rental
+--Skills used: Joins,Aggregate Functions,Group By etc
 --Results.....
 
 --Customer information showing full name and email address 
@@ -96,7 +96,7 @@ MIN(rental_rate) AS lowest_rental_rate,
 ROUND(AVG(rental_rate),2) AS average_rental_rate
 FROM film;
 
---DVD renta is lunching a platinum service for most loyal customers, return customers that have 40 or more transactions payments,
+--DVD rental is lunching a platinum service for most loyal customers, return customers that have 40 or more transactions payments,
 SELECT customer_id, COUNT (customer_id) FROM payment
 GROUP BY customer_id
 HAVING COUNT(customer_id) >=40;
