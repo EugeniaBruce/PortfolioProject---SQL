@@ -1,18 +1,19 @@
- --DVD RENTAL DATA ANALYSIS
+ --DVD RENTAL DATA EXPLORATION
  
 --Tool: POSTGRESQL
---Task: Use PostgreSQL to analyze data and identify 
---trends and patterns for a DVD rental
+--Task: Use PostgreSQL to explore data and identify 
+--trends for a DVD rental
 --Skills used: Joins,Aggregate Functions,Group By etc
 
 
 --Customer information showing full name and email address 
 SELECT first_name,last_name,email FROM customer;
 
+
 --Show list of film ratings available 
 SELECT DISTINCT rating FROM film;
 
---Identify email address of Nancy Thomas
+--Show email address of Nancy Thomas
 SELECT email FROM customer
 WHERE first_name = 'Nancy'and last_name = 'Thomas';
 
@@ -29,6 +30,14 @@ SELECT COUNT (title) FROM film
  SELECT COUNT (amount) FROM payment
  WHERE amount > 4;
  
+ --Rental durations available sort from lowest to highest
+SELECT  DISTINCT rental_duration FROM film
+ORDER BY rental_duration;
+
+--List of film titles along with their lengths, rental rate and sort them from shortest to longest
+SELECT title,rental_rate,length FROM film
+ORDER BY length;
+
 --How many actors with first name starting with P
  SELECT COUNT(first_name) FROM actor
  WHERE first_name LIKE 'P%';
@@ -113,13 +122,8 @@ title,rating,rental_rate,replacement_cost
 FROM film INNER JOIN inventory 
 ON inventory.film_id =film.film_id;
 
---Rental durations available – from lowest to highest
-SELECT  DISTINCT rental_duration FROM film
-ORDER BY rental_duration;
 
---List of film titles along with their lengths , rental rate and sort them from shortest to longest
-SELECT title,rental_rate,length FROM film
-ORDER BY length;
+
 
 
 
