@@ -125,6 +125,7 @@ title,rating,rental_rate,replacement_cost
 FROM film INNER JOIN inventory 
 ON inventory.film_id =film.film_id;
 
+--Disclaimer: Part of a virtual SQL bootcamp hoseted by Udemy
 
 
 
