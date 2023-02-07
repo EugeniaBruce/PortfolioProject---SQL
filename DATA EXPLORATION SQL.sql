@@ -33,10 +33,6 @@ SELECT COUNT (title) FROM film
 SELECT  DISTINCT rental_duration FROM film
 ORDER BY rental_duration;
 
---Disclaimer; Part of a virtual SQL bootcamp hosted by Udemy
-
-
-
 --List of film titles along with their lengths, rental rate and sort them from shortest to longest
 SELECT title,rental_rate,length FROM film
 ORDER BY length;
